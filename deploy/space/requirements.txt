@@ -1,0 +1,9 @@
+# torch (CPU build) is installed separately in the Dockerfile
+fitparse==1.2.0
+joblib==1.6.0
+numpy==2.5.3
+scikit-learn==1.9.1
+scipy==1.18.1
+streamlit==1.66.0
+plotly==7.1.0
+pandas==3.0.6

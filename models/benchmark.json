@@ -1,0 +1,2380 @@
+{
+ "created": "2026-09-25T16:15:31",
+ "split": {
+  "train": [
+   "Play1",
+   "Play2",
+   "Play4",
+   "Play7",
+   "Play8",
+   "Play10",
+   "Play11"
+  ],
+  "val": [
+   "Play3",
+   "Play5"
+  ],
+  "test": [
+   "Play6",
+   "Play9",
+   "Play12"
+  ]
+ },
+ "seeds": 3,
+ "classes": [
+  "BackhandTransition",
+  "ForehandHigh",
+  "ForehandKill",
+  "ForehandLob"
+ ],
+ "rows": [
+  {
+   "model": "gru",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "none",
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 0.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "sgd",
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.5,
+    "dense": [
+     128
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": false,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "gru"
+   },
+   "cv_accuracy": 0.7939778129952456,
+   "cv": {
+    "accuracy": 0.7939778129952456,
+    "balanced_accuracy": 0.8068955756581141,
+    "macro_precision": 0.8104352778540803,
+    "macro_recall": 0.8068955756581141,
+    "macro_f1": 0.8066727800857387,
+    "cohen_kappa": 0.7240565006341015,
+    "mcc": 0.7254018931476047,
+    "log_loss": 0.5245097026865879,
+    "roc_auc_ovr": 0.9375665363088808,
+    "skewed_session_accuracy": 0.7961733023751307,
+    "skewed_session_accuracy_balanced": 0.7961733023751307
+   },
+   "test": {
+    "accuracy": [
+     0.8725038402457757,
+     0.021395373697671454
+    ],
+    "balanced_accuracy": [
+     0.8678201506591336,
+     0.023565896912760044
+    ],
+    "macro_precision": [
+     0.8805713107619004,
+     0.019828834507952902
+    ],
+    "macro_recall": [
+     0.8678201506591336,
+     0.023565896912760044
+    ],
+    "macro_f1": [
+     0.8695146523520024,
+     0.022956689106934353
+    ],
+    "cohen_kappa": [
+     0.8291394010892192,
+     0.02881836742270785
+    ],
+    "mcc": [
+     0.8326060759124796,
+     0.027983794604358077
+    ],
+    "log_loss": [
+     0.40218406222162506,
+     0.011684005737528085
+    ],
+    "roc_auc_ovr": [
+     0.9608276598999774,
+     0.0024026596462185606
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.880184331797235,
+    "balanced_accuracy": 0.8763408085491953,
+    "macro_precision": 0.8890030441400305,
+    "macro_recall": 0.8763408085491953,
+    "macro_f1": 0.8775145341359264,
+    "weighted_f1": 0.8778817254089722,
+    "cohen_kappa": 0.8394742083250348,
+    "mcc": 0.8434092002350904,
+    "log_loss": 0.3873088292429025,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.8333333333333334,
+      "recall": 0.660377358490566,
+      "f1": 0.7368421052631579,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.7671232876712328,
+      "recall": 0.9491525423728814,
+      "f1": 0.8484848484848485,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.9555555555555556,
+      "recall": 0.8958333333333334,
+      "f1": 0.9247311827956989,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      35,
+      17,
+      1
+     ],
+     [
+      0,
+      2,
+      56,
+      1
+     ],
+     [
+      0,
+      5,
+      0,
+      43
+     ]
+    ],
+    "roc_auc_ovr": 0.9619479538528387,
+    "train_s": 64.57952761650085,
+    "infer_ms_per_stroke": 0.10845628202236193,
+    "skewed_session_accuracy": 0.8683080808080808,
+    "skewed_session_accuracy_balanced": 0.8683080808080808,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.9090909090909091,
+     "Play9": 0.9625
+    }
+   },
+   "skew": 0.8608465608465607,
+   "skew_bal": 0.8608465608465607,
+   "train_s": 65.3334407011668,
+   "infer_ms": 0.11088331723542806
+  },
+  {
+   "model": "rf",
+   "family": "features",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "rf",
+    "max_features": "sqrt"
+   },
+   "cv_accuracy": 0.8700475435816165,
+   "cv": {
+    "accuracy": 0.8700475435816165,
+    "balanced_accuracy": 0.8779054190182658,
+    "macro_precision": 0.8765150736035492,
+    "macro_recall": 0.8779054190182658,
+    "macro_f1": 0.8765010026737968,
+    "cohen_kappa": 0.8258759708705192,
+    "mcc": 0.8264101379254741,
+    "log_loss": 0.4428242843380607,
+    "roc_auc_ovr": 0.9673219076846533,
+    "skewed_session_accuracy": 0.7814876075546409,
+    "skewed_session_accuracy_balanced": 0.7991592936841901
+   },
+   "test": {
+    "accuracy": [
+     0.8417818740399386,
+     0.005747553589514478
+    ],
+    "balanced_accuracy": [
+     0.8388381435881036,
+     0.005457772650084284
+    ],
+    "macro_precision": [
+     0.8663532355154819,
+     0.009457716700001754
+    ],
+    "macro_recall": [
+     0.8388381435881036,
+     0.005457772650084284
+    ],
+    "macro_f1": [
+     0.8253254878301591,
+     0.005369178953474103
+    ],
+    "cohen_kappa": [
+     0.7879611291725251,
+     0.0077062270558693885
+    ],
+    "mcc": [
+     0.803347813645118,
+     0.008388264304091862
+    ],
+    "log_loss": [
+     0.41051474863230814,
+     0.004763511555449772
+    ],
+    "roc_auc_ovr": [
+     0.9740250666057211,
+     0.001876172624108476
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.847926267281106,
+    "balanced_accuracy": 0.8448076564332161,
+    "macro_precision": 0.8735185185185185,
+    "macro_recall": 0.8448076564332161,
+    "macro_f1": 0.8313994828700711,
+    "weighted_f1": 0.8319565046862416,
+    "cohen_kappa": 0.7962383337127248,
+    "mcc": 0.8114834876601323,
+    "log_loss": 0.40884679474607116,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.92,
+      "recall": 0.4339622641509434,
+      "f1": 0.5897435897435898,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.7037037037037037,
+      "recall": 0.9661016949152542,
+      "f1": 0.8142857142857143,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8703703703703703,
+      "recall": 0.9791666666666666,
+      "f1": 0.9215686274509803,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      23,
+      24,
+      6
+     ],
+     [
+      0,
+      1,
+      57,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9758902910094801,
+    "train_s": 3.61627459526062,
+    "infer_ms_per_stroke": 0.7742385161087809,
+    "skewed_session_accuracy": 0.7264369889369889,
+    "skewed_session_accuracy_balanced": 0.7627645502645504,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.8311688311688312,
+     "Play9": 0.95
+    }
+   },
+   "skew": 0.7216710758377425,
+   "skew_bal": 0.7557018598685267,
+   "train_s": 3.64974308013916,
+   "infer_ms": 0.7710830407208561
+  },
+  {
+   "model": "transformer",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 15.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 30,
+    "batch": 32,
+    "optimizer": "adam",
+    "lr": 0.0005,
+    "weight_decay": 0.001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.0,
+    "dropout": 0.3,
+    "dense": [],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 32,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "transformer"
+   },
+   "cv_accuracy": 0.7828843106180665,
+   "cv": {
+    "accuracy": 0.7828843106180665,
+    "balanced_accuracy": 0.7955454675846242,
+    "macro_precision": 0.7988846796930202,
+    "macro_recall": 0.7955454675846242,
+    "macro_f1": 0.7970596224185941,
+    "cohen_kappa": 0.7090374848118691,
+    "mcc": 0.7091449409299427,
+    "log_loss": 0.578940558618501,
+    "roc_auc_ovr": 0.9313138264893863,
+    "skewed_session_accuracy": 0.7792987566792077,
+    "skewed_session_accuracy_balanced": 0.7807460693213091
+   },
+   "test": {
+    "accuracy": [
+     0.8387096774193549,
+     0.0
+    ],
+    "balanced_accuracy": [
+     0.8343944378521723,
+     0.00035594699948248
+    ],
+    "macro_precision": [
+     0.8672584433645628,
+     0.0014884161786107338
+    ],
+    "macro_recall": [
+     0.8343944378521723,
+     0.00035594699948248
+    ],
+    "macro_f1": [
+     0.829743396419239,
+     0.0019058763798954906
+    ],
+    "cohen_kappa": [
+     0.7835277791465504,
+     1.2677716325659715e-05
+    ],
+    "mcc": [
+     0.7982479430978494,
+     0.0009257886392020574
+    ],
+    "log_loss": [
+     0.48355706621165845,
+     0.03598515180877515
+    ],
+    "roc_auc_ovr": [
+     0.9361140302410412,
+     0.009017334969468762
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.8387096774193549,
+    "balanced_accuracy": 0.8347220059863442,
+    "macro_precision": 0.8693450908319785,
+    "macro_recall": 0.8347220059863442,
+    "macro_f1": 0.8293295881687061,
+    "weighted_f1": 0.828400339795965,
+    "cohen_kappa": 0.783513382549953,
+    "mcc": 0.799192440902159,
+    "log_loss": 0.5318389386721111,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 0.9824561403508771,
+      "f1": 0.9911504424778761,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.8571428571428571,
+      "recall": 0.4528301886792453,
+      "f1": 0.5925925925925926,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6627906976744186,
+      "recall": 0.9661016949152542,
+      "f1": 0.7862068965517242,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.9574468085106383,
+      "recall": 0.9375,
+      "f1": 0.9473684210526315,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      56,
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      24,
+      28,
+      1
+     ],
+     [
+      0,
+      1,
+      57,
+      1
+     ],
+     [
+      0,
+      3,
+      0,
+      45
+     ]
+    ],
+    "roc_auc_ovr": 0.925921338966903,
+    "train_s": 27.85109043121338,
+    "infer_ms_per_stroke": 0.08708211134106332,
+    "skewed_session_accuracy": 0.8285594035594035,
+    "skewed_session_accuracy_balanced": 0.8225408850408851,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.7662337662337663,
+     "Play9": 0.9875
+    }
+   },
+   "skew": 0.8265792849126181,
+   "skew_bal": 0.8220498637165304,
+   "train_s": 26.28759495417277,
+   "infer_ms": 0.08722457651352185
+  },
+  {
+   "model": "et",
+   "family": "features",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 2,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "et",
+    "min_samples_leaf": 2,
+    "max_features": 0.3
+   },
+   "cv_accuracy": 0.8716323296354992,
+   "cv": {
+    "accuracy": 0.8716323296354992,
+    "balanced_accuracy": 0.8783876335908418,
+    "macro_precision": 0.8780427111025433,
+    "macro_recall": 0.8783876335908418,
+    "macro_f1": 0.877464870103644,
+    "cohen_kappa": 0.8279722256814839,
+    "mcc": 0.8285330716743545,
+    "log_loss": 0.4306451812798447,
+    "roc_auc_ovr": 0.9680389172592658,
+    "skewed_session_accuracy": 0.7739868532226345,
+    "skewed_session_accuracy_balanced": 0.791088575509814
+   },
+   "test": {
+    "accuracy": [
+     0.8356374807987711,
+     0.0021723710635531317
+    ],
+    "balanced_accuracy": [
+     0.8328686307429911,
+     0.002119607592489949
+    ],
+    "macro_precision": [
+     0.85818076456437,
+     0.003911073357553625
+    ],
+    "macro_recall": [
+     0.8328686307429911,
+     0.002119607592489949
+    ],
+    "macro_f1": [
+     0.8189476053341326,
+     0.002510918568285247
+    ],
+    "cohen_kappa": [
+     0.7797037879326699,
+     0.0029118119193978225
+    ],
+    "mcc": [
+     0.795061520460503,
+     0.0031063447049825862
+    ],
+    "log_loss": [
+     0.3977543508690637,
+     0.010667583597221449
+    ],
+    "roc_auc_ovr": [
+     0.9698937202722293,
+     0.0027345683923224867
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.8387096774193549,
+    "balanced_accuracy": 0.8358533871655474,
+    "macro_precision": 0.8624298205246204,
+    "macro_recall": 0.8358533871655474,
+    "macro_f1": 0.8222804686360616,
+    "weighted_f1": 0.8222854905581518,
+    "cohen_kappa": 0.7838214783821478,
+    "mcc": 0.7992424481033358,
+    "log_loss": 0.3895086786236988,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.88,
+      "recall": 0.41509433962264153,
+      "f1": 0.5641025641025641,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6829268292682927,
+      "recall": 0.9491525423728814,
+      "f1": 0.7943262411347518,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8867924528301887,
+      "recall": 0.9791666666666666,
+      "f1": 0.9306930693069307,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      22,
+      26,
+      5
+     ],
+     [
+      0,
+      2,
+      56,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9724985512412103,
+    "train_s": 2.439876079559326,
+    "infer_ms_per_stroke": 0.8255358665220199,
+    "skewed_session_accuracy": 0.7159511784511784,
+    "skewed_session_accuracy_balanced": 0.7611291486291487,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.7922077922077922,
+     "Play9": 0.9625
+    }
+   },
+   "skew": 0.7205447330447329,
+   "skew_bal": 0.7621913580246914,
+   "train_s": 2.439350684483846,
+   "infer_ms": 0.8197372776388939
+  },
+  {
+   "model": "svm",
+   "family": "features",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "svm",
+    "C": 0.3,
+    "gamma": 0.0003
+   },
+   "cv_accuracy": 0.8922345483359746,
+   "cv": {
+    "accuracy": 0.8922345483359746,
+    "balanced_accuracy": 0.8978929805601142,
+    "macro_precision": 0.8976515793122425,
+    "macro_recall": 0.8978929805601142,
+    "macro_f1": 0.8970406613437153,
+    "cohen_kappa": 0.8555923145010114,
+    "mcc": 0.8561284893909398,
+    "log_loss": 0.464353517140925,
+    "roc_auc_ovr": 0.9727253987151911,
+    "skewed_session_accuracy": 0.8099011136431775,
+    "skewed_session_accuracy_balanced": 0.8381172383827872
+   },
+   "test": {
+    "accuracy": [
+     0.8141321044546851,
+     0.0021723710635531317
+    ],
+    "balanced_accuracy": [
+     0.8102164614646625,
+     0.0022236062301464014
+    ],
+    "macro_precision": [
+     0.8459696370048087,
+     0.002505545491267655
+    ],
+    "macro_recall": [
+     0.8102164614646625,
+     0.0022236062301464014
+    ],
+    "macro_f1": [
+     0.7826275809884358,
+     0.003622844550809166
+    ],
+    "cohen_kappa": [
+     0.7508281738285277,
+     0.002895394205417381
+    ],
+    "mcc": [
+     0.7738004269524833,
+     0.0025014618151268995
+    ],
+    "log_loss": [
+     0.526539424297887,
+     0.004410924035209522
+    ],
+    "roc_auc_ovr": [
+     0.9397574654272836,
+     0.0008501633115272578
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.815668202764977,
+    "balanced_accuracy": 0.8117887885086877,
+    "macro_precision": 0.8477413252122554,
+    "macro_recall": 0.8117887885086877,
+    "macro_f1": 0.7851893189374977,
+    "weighted_f1": 0.7864430701605026,
+    "cohen_kappa": 0.7528755267053866,
+    "mcc": 0.7755692275648387,
+    "log_loss": 0.5294543126120647,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.8888888888888888,
+      "recall": 0.3018867924528302,
+      "f1": 0.4507042253521127,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6627906976744186,
+      "recall": 0.9661016949152542,
+      "f1": 0.7862068965517242,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8392857142857143,
+      "recall": 0.9791666666666666,
+      "f1": 0.9038461538461539,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      16,
+      29,
+      8
+     ],
+     [
+      0,
+      1,
+      57,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9408925946897582,
+    "train_s": 4.341661691665649,
+    "infer_ms_per_stroke": 0.9960842572049611,
+    "skewed_session_accuracy": 0.721969696969697,
+    "skewed_session_accuracy_balanced": 0.774963924963925,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.8181818181818182,
+     "Play9": 0.875
+    }
+   },
+   "skew": 0.7160874619207952,
+   "skew_bal": 0.7788299663299663,
+   "train_s": 4.111139297485352,
+   "infer_ms": 0.9136218262890701
+  },
+  {
+   "model": "hgb",
+   "family": "features",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "hgb",
+    "learning_rate": 0.03,
+    "max_leaf_nodes": 31,
+    "l2_regularization": 0.0
+   },
+   "cv_accuracy": 0.8779714738510301,
+   "cv": {
+    "accuracy": 0.8779714738510301,
+    "balanced_accuracy": 0.8850287061868737,
+    "macro_precision": 0.8838833656367575,
+    "macro_recall": 0.8850287061868737,
+    "macro_f1": 0.8831537580776712,
+    "cohen_kappa": 0.8364987919210138,
+    "mcc": 0.8374490564017907,
+    "log_loss": 0.5886804320186689,
+    "roc_auc_ovr": 0.969560508313102,
+    "skewed_session_accuracy": 0.7948408729343871,
+    "skewed_session_accuracy_balanced": 0.832335663051933
+   },
+   "test": {
+    "accuracy": [
+     0.8095238095238096,
+     0.004344742127106316
+    ],
+    "balanced_accuracy": [
+     0.807258354653022,
+     0.004221083013159242
+    ],
+    "macro_precision": [
+     0.8192176393565282,
+     0.006365415982903528
+    ],
+    "macro_recall": [
+     0.807258354653022,
+     0.004221083013159242
+    ],
+    "macro_f1": [
+     0.7876791493296347,
+     0.004744655891078587
+    ],
+    "cohen_kappa": [
+     0.7448196724420798,
+     0.0058206367755358045
+    ],
+    "mcc": [
+     0.7598643120785247,
+     0.0059382080293339965
+    ],
+    "log_loss": [
+     1.0318388669055778,
+     0.027066442755427658
+    ],
+    "roc_auc_ovr": [
+     0.9459942120229256,
+     0.0020055472298996574
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.815668202764977,
+    "balanced_accuracy": 0.8132278674981345,
+    "macro_precision": 0.8282196969696969,
+    "macro_recall": 0.8132278674981345,
+    "macro_f1": 0.7943891060395915,
+    "weighted_f1": 0.7948200696444623,
+    "cohen_kappa": 0.7530512959116902,
+    "mcc": 0.7682622064098017,
+    "log_loss": 1.0639880925739047,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.7916666666666666,
+      "recall": 0.3584905660377358,
+      "f1": 0.4935064935064935,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6666666666666666,
+      "recall": 0.9152542372881356,
+      "f1": 0.7714285714285715,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8545454545454545,
+      "recall": 0.9791666666666666,
+      "f1": 0.912621359223301,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      19,
+      27,
+      7
+     ],
+     [
+      0,
+      4,
+      54,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9474932850194117,
+    "train_s": 11.41232442855835,
+    "infer_ms_per_stroke": 0.4979926869616531,
+    "skewed_session_accuracy": 0.7306577681577681,
+    "skewed_session_accuracy_balanced": 0.7820165945165946,
+    "per_player": {
+     "Play12": 0.75,
+     "Play6": 0.7792207792207793,
+     "Play9": 0.9
+    }
+   },
+   "skew": 0.7282146865480198,
+   "skew_bal": 0.7825156325156325,
+   "train_s": 11.894625663757324,
+   "infer_ms": 0.5238034208798739
+  },
+  {
+   "model": "cnn",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 0.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 30,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.0005,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.2,
+    "dropout": 0.3,
+    "dense": [
+     128
+    ],
+    "channels": [
+     64,
+     128,
+     128
+    ],
+    "kernel": 9,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "cnn"
+   },
+   "cv_accuracy": 0.7923930269413629,
+   "cv": {
+    "accuracy": 0.7923930269413629,
+    "balanced_accuracy": 0.8042960012808711,
+    "macro_precision": 0.812409445037795,
+    "macro_recall": 0.8042960012808711,
+    "macro_f1": 0.8073489428375888,
+    "cohen_kappa": 0.7217354128304478,
+    "mcc": 0.7225559498682856,
+    "log_loss": 0.6117485318477477,
+    "roc_auc_ovr": 0.9426221598936309,
+    "skewed_session_accuracy": 0.7929587853850978,
+    "skewed_session_accuracy_balanced": 0.7929201609185558
+   },
+   "test": {
+    "accuracy": [
+     0.8095238095238096,
+     0.022680219754582794
+    ],
+    "balanced_accuracy": [
+     0.8096024100131473,
+     0.021407211472879856
+    ],
+    "macro_precision": [
+     0.8160791060926739,
+     0.017709071355379254
+    ],
+    "macro_recall": [
+     0.8096024100131473,
+     0.021407211472879856
+    ],
+    "macro_f1": [
+     0.8112435250375842,
+     0.019476846578565445
+    ],
+    "cohen_kappa": [
+     0.745375321965676,
+     0.030119002260121822
+    ],
+    "mcc": [
+     0.7465834470006151,
+     0.03011771119412736
+    ],
+    "log_loss": [
+     0.5620204740960429,
+     0.033032004485928655
+    ],
+    "roc_auc_ovr": [
+     0.9490284890609261,
+     0.008970121388198072
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.8064516129032258,
+    "balanced_accuracy": 0.8075964715915147,
+    "macro_precision": 0.8093904342794085,
+    "macro_recall": 0.8075964715915147,
+    "macro_f1": 0.8083033593201057,
+    "weighted_f1": 0.8064202582415269,
+    "cohen_kappa": 0.7412486159611618,
+    "mcc": 0.7413962254024365,
+    "log_loss": 0.5742479996603518,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.6078431372549019,
+      "recall": 0.5849056603773585,
+      "f1": 0.5961538461538461,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6935483870967742,
+      "recall": 0.7288135593220338,
+      "f1": 0.7107438016528925,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.9361702127659575,
+      "recall": 0.9166666666666666,
+      "f1": 0.9263157894736842,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      31,
+      19,
+      3
+     ],
+     [
+      0,
+      16,
+      43,
+      0
+     ],
+     [
+      0,
+      4,
+      0,
+      44
+     ]
+    ],
+    "roc_auc_ovr": 0.940523370446182,
+    "train_s": 11.33301329612732,
+    "infer_ms_per_stroke": 0.10357584272112165,
+    "skewed_session_accuracy": 0.7971560846560847,
+    "skewed_session_accuracy_balanced": 0.7986531986531986,
+    "per_player": {
+     "Play12": 0.7333333333333333,
+     "Play6": 0.8181818181818182,
+     "Play9": 0.85
+    }
+   },
+   "skew": 0.8048240339907006,
+   "skew_bal": 0.8040885040885041,
+   "train_s": 13.109824339548746,
+   "infer_ms": 0.10739823090865315
+  },
+  {
+   "model": "mlp",
+   "family": "mlp",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 64,
+    "optimizer": "adamw",
+    "lr": 0.005,
+    "weight_decay": 0.05,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.5,
+    "dense": [
+     128
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "mlp"
+   },
+   "cv_accuracy": 0.8811410459587956,
+   "cv": {
+    "accuracy": 0.8811410459587956,
+    "balanced_accuracy": 0.8874738121922907,
+    "macro_precision": 0.888105842861397,
+    "macro_recall": 0.8874738121922907,
+    "macro_f1": 0.8873107235725831,
+    "cohen_kappa": 0.8406984024397632,
+    "mcc": 0.8410496821058846,
+    "log_loss": 0.4125253274756935,
+    "roc_auc_ovr": 0.9716015643221999,
+    "skewed_session_accuracy": 0.8253826939797355,
+    "skewed_session_accuracy_balanced": 0.8243008086586722
+   },
+   "test": {
+    "accuracy": [
+     0.7941628264208909,
+     0.005747553589514478
+    ],
+    "balanced_accuracy": [
+     0.7902559028888178,
+     0.005498997237734509
+    ],
+    "macro_precision": [
+     0.8330823082341007,
+     0.010990275450379814
+    ],
+    "macro_recall": [
+     0.7902559028888178,
+     0.005498997237734509
+    ],
+    "macro_f1": [
+     0.7547560501667997,
+     0.006345561275319658
+    ],
+    "cohen_kappa": [
+     0.7239718445558596,
+     0.0076766319683702
+    ],
+    "mcc": [
+     0.7511910686746891,
+     0.008137225528326672
+    ],
+    "log_loss": [
+     0.5537607034073377,
+     0.002553526574672145
+    ],
+    "roc_auc_ovr": [
+     0.9375851243819812,
+     0.0020056738625729774
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.8018433179723502,
+    "balanced_accuracy": 0.7976378451124613,
+    "macro_precision": 0.848395567570612,
+    "macro_recall": 0.7976378451124613,
+    "macro_f1": 0.7633920167502257,
+    "weighted_f1": 0.764905708278705,
+    "cohen_kappa": 0.7342428298823731,
+    "mcc": 0.7620090011042345,
+    "log_loss": 0.555441588054291,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.9285714285714286,
+      "recall": 0.24528301886792453,
+      "f1": 0.3880597014925373,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6404494382022472,
+      "recall": 0.9661016949152542,
+      "f1": 0.7702702702702703,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8245614035087719,
+      "recall": 0.9791666666666666,
+      "f1": 0.8952380952380953,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      13,
+      31,
+      9
+     ],
+     [
+      0,
+      1,
+      57,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9347496523842622,
+    "train_s": 26.24331545829773,
+    "infer_ms_per_stroke": 0.4700219026908347,
+    "skewed_session_accuracy": 0.740434102934103,
+    "skewed_session_accuracy_balanced": 0.7518157768157767,
+    "per_player": {
+     "Play12": 0.75,
+     "Play6": 0.7922077922077922,
+     "Play9": 0.85
+    }
+   },
+   "skew": 0.7429393137726472,
+   "skew_bal": 0.7539943081609749,
+   "train_s": 24.70747470855713,
+   "infer_ms": 0.465508796469224
+  },
+  {
+   "model": "ensemble",
+   "family": "ensemble",
+   "cfg": {
+    "members": [
+     "svm",
+     "mlp",
+     "hgb"
+    ]
+   },
+   "cv_accuracy": 0.8837823560486001,
+   "test": {
+    "accuracy": [
+     0.7926267281105991,
+     0.0
+    ],
+    "balanced_accuracy": [
+     0.7882038828483103,
+     0.0
+    ],
+    "macro_precision": [
+     0.8242370279855751,
+     0.0
+    ],
+    "macro_recall": [
+     0.7882038828483103,
+     0.0
+    ],
+    "macro_f1": [
+     0.7475990141084481,
+     0.0
+    ],
+    "cohen_kappa": [
+     0.7219216311652807,
+     0.0
+    ],
+    "mcc": [
+     0.7503459124677403,
+     0.0
+    ],
+    "log_loss": [
+     0.510413172307601,
+     0.0
+    ],
+    "roc_auc_ovr": [
+     0.9449763602219665,
+     0.0
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.7926267281105991,
+    "balanced_accuracy": 0.7882038828483103,
+    "macro_precision": 0.8242370279855751,
+    "macro_recall": 0.7882038828483103,
+    "macro_f1": 0.7475990141084481,
+    "weighted_f1": 0.7496711997624961,
+    "cohen_kappa": 0.7219216311652807,
+    "mcc": 0.7503459124677403,
+    "log_loss": 0.510413172307601,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.8461538461538461,
+      "recall": 0.20754716981132076,
+      "f1": 0.3333333333333333,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6404494382022472,
+      "recall": 0.9661016949152542,
+      "f1": 0.7702702702702703,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8103448275862069,
+      "recall": 0.9791666666666666,
+      "f1": 0.8867924528301887,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      11,
+      32,
+      10
+     ],
+     [
+      0,
+      1,
+      57,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      47
+     ]
+    ],
+    "roc_auc_ovr": 0.9449763602219665
+   },
+   "skew": null,
+   "skew_bal": null,
+   "train_s": null,
+   "infer_ms": null
+  },
+  {
+   "model": "logreg",
+   "family": "features",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 0,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "logreg"
+   },
+   "cv_accuracy": 0.8526148969889065,
+   "cv": {
+    "accuracy": 0.8526148969889065,
+    "balanced_accuracy": 0.8576963068219723,
+    "macro_precision": 0.8649969939562699,
+    "macro_recall": 0.8576963068219723,
+    "macro_f1": 0.860856996578589,
+    "cohen_kappa": 0.8022843280942032,
+    "mcc": 0.8025150858809145,
+    "log_loss": 0.4274480469330681,
+    "roc_auc_ovr": 0.9660536872119315,
+    "skewed_session_accuracy": 0.7850884975706142,
+    "skewed_session_accuracy_balanced": 0.7543973006662419
+   },
+   "test": {
+    "accuracy": [
+     0.7788018433179723,
+     0.0
+    ],
+    "balanced_accuracy": [
+     0.7735499280460504,
+     1.1102230246251565e-16
+    ],
+    "macro_precision": [
+     0.7857638888888889,
+     0.0
+    ],
+    "macro_recall": [
+     0.7735499280460504,
+     1.1102230246251565e-16
+    ],
+    "macro_f1": [
+     0.7382178433089023,
+     0.0
+    ],
+    "cohen_kappa": [
+     0.703163294385865,
+     0.0
+    ],
+    "mcc": [
+     0.7282644277734381,
+     0.0
+    ],
+    "log_loss": [
+     0.8166612883884229,
+     0.0
+    ],
+    "roc_auc_ovr": [
+     0.9000396904362207,
+     0.0
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.7788018433179723,
+    "balanced_accuracy": 0.7735499280460505,
+    "macro_precision": 0.7857638888888889,
+    "macro_recall": 0.7735499280460505,
+    "macro_f1": 0.7382178433089023,
+    "weighted_f1": 0.7400944017958473,
+    "cohen_kappa": 0.703163294385865,
+    "mcc": 0.7282644277734381,
+    "log_loss": 0.8166612883884229,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.6875,
+      "recall": 0.20754716981132076,
+      "f1": 0.3188405797101449,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6222222222222222,
+      "recall": 0.9491525423728814,
+      "f1": 0.7516778523489933,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.8333333333333334,
+      "recall": 0.9375,
+      "f1": 0.8823529411764706,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      11,
+      34,
+      8
+     ],
+     [
+      0,
+      2,
+      56,
+      1
+     ],
+     [
+      0,
+      3,
+      0,
+      45
+     ]
+    ],
+    "roc_auc_ovr": 0.9000396904362207,
+    "train_s": 0.6842176914215088,
+    "infer_ms_per_stroke": 0.5718705840923819,
+    "skewed_session_accuracy": 0.6841209716209716,
+    "skewed_session_accuracy_balanced": 0.7051166426166426,
+    "per_player": {
+     "Play12": 0.7166666666666667,
+     "Play6": 0.8181818181818182,
+     "Play9": 0.7875
+    }
+   },
+   "skew": 0.6841209716209716,
+   "skew_bal": 0.7051166426166425,
+   "train_s": 0.5527728398640951,
+   "infer_ms": 0.572004625874181
+  },
+  {
+   "model": "lstm",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "none",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 40,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "lstm"
+   },
+   "cv_accuracy": 0.7781299524564184,
+   "cv": {
+    "accuracy": 0.7781299524564184,
+    "balanced_accuracy": 0.7889043082629521,
+    "macro_precision": 0.795761666904524,
+    "macro_recall": 0.7889043082629521,
+    "macro_f1": 0.7905903410613777,
+    "cohen_kappa": 0.7027710859588442,
+    "mcc": 0.7041749095929565,
+    "log_loss": 0.7262223554494517,
+    "roc_auc_ovr": 0.9201442181476681,
+    "skewed_session_accuracy": 0.7805018888616917,
+    "skewed_session_accuracy_balanced": 0.7805018888616917
+   },
+   "test": {
+    "accuracy": [
+     0.7680491551459294,
+     0.03475793701685027
+    ],
+    "balanced_accuracy": [
+     0.760457751483495,
+     0.03458265646367209
+    ],
+    "macro_precision": [
+     0.7971594894433641,
+     0.022755081347167902
+    ],
+    "macro_recall": [
+     0.760457751483495,
+     0.03458265646367209
+    ],
+    "macro_f1": [
+     0.7693796209741729,
+     0.03197938963583491
+    ],
+    "cohen_kappa": [
+     0.6891516036108664,
+     0.04661241319352531
+    ],
+    "mcc": [
+     0.6930975094204476,
+     0.0454079362725424
+    ],
+    "log_loss": [
+     0.8223986189896496,
+     0.10308085997557355
+    ],
+    "roc_auc_ovr": [
+     0.888107939547484,
+     0.015144830253959497
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.7926267281105991,
+    "balanced_accuracy": 0.7846711438013004,
+    "macro_precision": 0.812566844919786,
+    "macro_recall": 0.7846711438013004,
+    "macro_f1": 0.7915644290956183,
+    "weighted_f1": 0.7954526264694971,
+    "cohen_kappa": 0.7220640974554562,
+    "mcc": 0.725117762256543,
+    "log_loss": 0.7662655037066405,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.5666666666666667,
+      "recall": 0.6415094339622641,
+      "f1": 0.6017699115044248,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.7424242424242424,
+      "recall": 0.8305084745762712,
+      "f1": 0.784,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.9411764705882353,
+      "recall": 0.6666666666666666,
+      "f1": 0.7804878048780488,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      34,
+      17,
+      2
+     ],
+     [
+      0,
+      10,
+      49,
+      0
+     ],
+     [
+      0,
+      16,
+      0,
+      32
+     ]
+    ],
+    "roc_auc_ovr": 0.9022253441695418,
+    "train_s": 27.245664358139038,
+    "infer_ms_per_stroke": 0.18477220139745193,
+    "skewed_session_accuracy": 0.7906926406926407,
+    "skewed_session_accuracy_balanced": 0.7906926406926407,
+    "per_player": {
+     "Play12": 0.75,
+     "Play6": 0.922077922077922,
+     "Play9": 0.7
+    }
+   },
+   "skew": 0.7669492544492544,
+   "skew_bal": 0.7669492544492544,
+   "train_s": 27.362961053848267,
+   "infer_ms": 0.16810670609481507
+  },
+  {
+   "model": "cnn_lstm",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 15.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 60,
+    "batch": 64,
+    "optimizer": "sgd",
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "scheduler": "none",
+    "label_smoothing": 0.0,
+    "dropout": 0.5,
+    "dense": [
+     64
+    ],
+    "channels": [
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "cnn_lstm"
+   },
+   "cv_accuracy": 0.7591125198098256,
+   "cv": {
+    "accuracy": 0.7591125198098256,
+    "balanced_accuracy": 0.7727775954315601,
+    "macro_precision": 0.773196873760709,
+    "macro_recall": 0.7727775954315601,
+    "macro_f1": 0.7726648106966378,
+    "cohen_kappa": 0.6774213077096415,
+    "mcc": 0.6776560708825803,
+    "log_loss": 1.5106598577249377,
+    "roc_auc_ovr": 0.9301989357585345,
+    "skewed_session_accuracy": 0.7539224368602457,
+    "skewed_session_accuracy_balanced": 0.7582055490814519
+   },
+   "test": {
+    "accuracy": [
+     0.7542242703533026,
+     0.021723710635531426
+    ],
+    "balanced_accuracy": [
+     0.7563370553956578,
+     0.015718425238454282
+    ],
+    "macro_precision": [
+     0.7880901210383398,
+     0.018264809113724273
+    ],
+    "macro_recall": [
+     0.7563370553956578,
+     0.015718425238454282
+    ],
+    "macro_f1": [
+     0.7426886367651003,
+     0.027983517365274234
+    ],
+    "cohen_kappa": [
+     0.6718463635317283,
+     0.027562832905895097
+    ],
+    "mcc": [
+     0.6921548002497498,
+     0.01202201960607499
+    ],
+    "log_loss": [
+     1.6086164570614798,
+     0.5006889997036249
+    ],
+    "roc_auc_ovr": [
+     0.9348730273478368,
+     0.0038670771040868763
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.7695852534562212,
+    "balanced_accuracy": 0.7683632475215861,
+    "macro_precision": 0.791735197368421,
+    "macro_recall": 0.7683632475215861,
+    "macro_f1": 0.7771682340647857,
+    "weighted_f1": 0.775469617516336,
+    "cohen_kappa": 0.6915072076426602,
+    "mcc": 0.6927138268874796,
+    "log_loss": 1.1280956620380527,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.5263157894736842,
+      "recall": 0.5660377358490566,
+      "f1": 0.5454545454545454,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.640625,
+      "recall": 0.6949152542372882,
+      "f1": 0.6666666666666666,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 1.0,
+      "recall": 0.8125,
+      "f1": 0.896551724137931,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      30,
+      23,
+      0
+     ],
+     [
+      0,
+      18,
+      41,
+      0
+     ],
+     [
+      0,
+      9,
+      0,
+      39
+     ]
+    ],
+    "roc_auc_ovr": 0.9366640685732697,
+    "train_s": 23.165681838989258,
+    "infer_ms_per_stroke": 0.11606480119415143,
+    "skewed_session_accuracy": 0.7698953823953825,
+    "skewed_session_accuracy_balanced": 0.7662457912457913,
+    "per_player": {
+     "Play12": 0.7166666666666667,
+     "Play6": 0.8181818181818182,
+     "Play9": 0.7625
+    }
+   },
+   "skew": 0.7570907487574154,
+   "skew_bal": 0.7532146865480199,
+   "train_s": 22.960857152938843,
+   "infer_ms": 0.1063866915607599
+  },
+  {
+   "model": "tcn",
+   "family": "sequence",
+   "cfg": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 40,
+    "batch": 32,
+    "optimizer": "adam",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     128,
+     64
+    ],
+    "channels": [
+     64,
+     64,
+     64,
+     64
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "tcn"
+   },
+   "cv_accuracy": 0.7987321711568938,
+   "cv": {
+    "accuracy": 0.7987321711568938,
+    "balanced_accuracy": 0.811252288222658,
+    "macro_precision": 0.8145704792073312,
+    "macro_recall": 0.811252288222658,
+    "macro_f1": 0.8124161269541803,
+    "cohen_kappa": 0.7303019492757525,
+    "mcc": 0.7306931068030776,
+    "log_loss": 0.6364003232139693,
+    "roc_auc_ovr": 0.9281085891095691,
+    "skewed_session_accuracy": 0.796315040792501,
+    "skewed_session_accuracy_balanced": 0.8006386724182186
+   },
+   "test": {
+    "accuracy": [
+     0.7357910906298004,
+     0.00868948425421258
+    ],
+    "balanced_accuracy": [
+     0.7337254157339302,
+     0.009278511216944042
+    ],
+    "macro_precision": [
+     0.757529379958504,
+     0.007574364304413172
+    ],
+    "macro_recall": [
+     0.7337254157339302,
+     0.009278511216944042
+    ],
+    "macro_f1": [
+     0.7408688203190351,
+     0.006419332353055174
+    ],
+    "cohen_kappa": [
+     0.6467569575388136,
+     0.011724251433759415
+    ],
+    "mcc": [
+     0.649628538038709,
+     0.010107885555262645
+    ],
+    "log_loss": [
+     0.7661628035054195,
+     0.03253851344665371
+    ],
+    "roc_auc_ovr": [
+     0.892836899881286,
+     0.010976177368070451
+    ]
+   },
+   "test_seed0": {
+    "n": 217,
+    "accuracy": 0.7235023041474654,
+    "balanced_accuracy": 0.72063212877092,
+    "macro_precision": 0.7619144880174291,
+    "macro_recall": 0.72063212877092,
+    "macro_f1": 0.7319892078566803,
+    "weighted_f1": 0.7327008626751984,
+    "cohen_kappa": 0.6301766744304949,
+    "mcc": 0.6354574548042876,
+    "log_loss": 0.8111333856413133,
+    "per_class": {
+     "BackhandTransition": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 57
+     },
+     "ForehandHigh": {
+      "precision": 0.4583333333333333,
+      "recall": 0.6226415094339622,
+      "f1": 0.528,
+      "support": 53
+     },
+     "ForehandKill": {
+      "precision": 0.6481481481481481,
+      "recall": 0.5932203389830508,
+      "f1": 0.6194690265486725,
+      "support": 59
+     },
+     "ForehandLob": {
+      "precision": 0.9411764705882353,
+      "recall": 0.6666666666666666,
+      "f1": 0.7804878048780488,
+      "support": 48
+     }
+    },
+    "confusion": [
+     [
+      57,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      33,
+      19,
+      1
+     ],
+     [
+      0,
+      23,
+      35,
+      1
+     ],
+     [
+      0,
+      16,
+      0,
+      32
+     ]
+    ],
+    "roc_auc_ovr": 0.8779551104915845,
+    "train_s": 38.97392678260803,
+    "infer_ms_per_stroke": 0.15624107853058847,
+    "skewed_session_accuracy": 0.7139550264550265,
+    "skewed_session_accuracy_balanced": 0.7176046176046176,
+    "per_player": {
+     "Play12": 0.6333333333333333,
+     "Play6": 0.8571428571428571,
+     "Play9": 0.6625
+    }
+   },
+   "skew": 0.7349887766554434,
+   "skew_bal": 0.7327020202020202,
+   "train_s": 38.795463959376015,
+   "infer_ms": 0.1536411806918143
+  }
+ ],
+ "tuning": {
+  "svm": {
+   "trials": 30,
+   "best": 0.8922345483359746,
+   "worst": 0.7797147385103012,
+   "seconds": 177.6
+  },
+  "logreg": {
+   "trials": 14,
+   "best": 0.8652931854199684,
+   "worst": 0.7797147385103012,
+   "seconds": 54.60000000000001
+  },
+  "rf": {
+   "trials": 16,
+   "best": 0.8700475435816165,
+   "worst": 0.751188589540412,
+   "seconds": 290.19999999999993
+  },
+  "et": {
+   "trials": 16,
+   "best": 0.8763866877971473,
+   "worst": 0.7797147385103012,
+   "seconds": 168.39999999999998
+  },
+  "hgb": {
+   "trials": 16,
+   "best": 0.8779714738510301,
+   "worst": 0.7955625990491284,
+   "seconds": 712.3000000000001
+  },
+  "mlp": {
+   "trials": 20,
+   "best": 0.8811410459587956,
+   "worst": 0.8066561014263075,
+   "seconds": 1675.8
+  },
+  "cnn": {
+   "trials": 14,
+   "best": 0.7987321711568938,
+   "worst": 0.6735340729001584,
+   "seconds": 582.5999999999999
+  },
+  "tcn": {
+   "trials": 14,
+   "best": 0.8161648177496038,
+   "worst": 0.757527733755943,
+   "seconds": 2370.0
+  },
+  "cnn_lstm": {
+   "trials": 10,
+   "best": 0.8050713153724247,
+   "worst": 0.7305863708399366,
+   "seconds": 785.6
+  },
+  "transformer": {
+   "trials": 8,
+   "best": 0.8003169572107766,
+   "worst": 0.7385103011093502,
+   "seconds": 1169.6999999999998
+  },
+  "gru": {
+   "trials": 8,
+   "best": 0.8193343898573693,
+   "worst": 0.768621236133122,
+   "seconds": 1325.7
+  },
+  "lstm": {
+   "trials": 8,
+   "best": 0.803486529318542,
+   "worst": 0.27258320126782887,
+   "seconds": 910.0
+  }
+ }
+}

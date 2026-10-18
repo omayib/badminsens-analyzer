@@ -1,0 +1,622 @@
+{
+ "attributes": {
+  "Power": [
+   [
+    "smash_p75_dps",
+    2500,
+    3000,
+    2.0
+   ],
+   [
+    "swing_p90_kmh",
+    90,
+    130,
+    1.0
+   ],
+   [
+    "acc_p90_g",
+    7.0,
+    11.0,
+    1.0
+   ],
+   [
+    "attack_ratio",
+    0.25,
+    0.6,
+    1.0
+   ]
+  ],
+  "Speed": [
+   [
+    "swings_per_min",
+    6.0,
+    12.0,
+    1.5
+   ],
+   [
+    "shot_interval_s",
+    2.6,
+    1.6,
+    1.0
+   ],
+   [
+    "swing_med_kmh",
+    45,
+    75,
+    1.0
+   ]
+  ],
+  "Control": [
+   [
+    "attack_ratio",
+    0.6,
+    0.25,
+    1.0
+   ],
+   [
+    "speed_cv",
+    0.35,
+    0.18,
+    1.0
+   ],
+   [
+    "mean_confidence",
+    0.6,
+    0.85,
+    1.0
+   ],
+   [
+    "transition_entropy",
+    1.3,
+    2.1,
+    1.0
+   ]
+  ],
+  "Endurance": [
+   [
+    "active_min",
+    20,
+    90,
+    1.0
+   ],
+   [
+    "hr_avg_pct_hrr",
+    35,
+    70,
+    1.0
+   ],
+   [
+    "speed_retention",
+    0.6,
+    1.0,
+    1.5
+   ],
+   [
+    "aerobic_te",
+    1.5,
+    4.0,
+    1.0
+   ]
+  ],
+  "Agility": [
+   [
+    "move_g",
+    0.15,
+    0.3,
+    1.5
+   ],
+   [
+    "backhand_share",
+    0.08,
+    0.2,
+    1.0
+   ],
+   [
+    "rally_len",
+    1.8,
+    3.2,
+    1.0
+   ],
+   [
+    "anaerobic_te",
+    0.5,
+    3.0,
+    1.0
+   ]
+  ]
+ },
+ "archetypes": {
+  "Attacking": [
+   22,
+   -2,
+   -12,
+   -2,
+   -6
+  ],
+  "Defensive": [
+   -12,
+   10,
+   -2,
+   2,
+   12
+  ],
+  "Control": [
+   -10,
+   -6,
+   22,
+   2,
+   -8
+  ],
+  "All-round": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "temperature": 45.0,
+ "skill": {
+  "features": [
+   "smash_p75_dps",
+   "backhand_med_dps",
+   "smash_drop_gap_dps"
+  ],
+  "mean": [
+   2678.2,
+   1335.3,
+   1389.5
+  ],
+  "std": [
+   203.6,
+   416.7,
+   218.6
+  ],
+  "cutpoints": [
+   -0.249,
+   0.727
+  ],
+  "levels": [
+   "Low",
+   "Medium",
+   "High"
+  ]
+ },
+ "validation": {
+  "skill_loso": {
+   "players": 12,
+   "exact_accuracy": 0.75,
+   "within_one_level": 1.0,
+   "majority_baseline": 0.417,
+   "spearman_rho_heldout_index_vs_level": 0.85,
+   "spearman_p": 0.0005,
+   "per_feature_rho": {
+    "smash_p75_dps": 0.7,
+    "backhand_med_dps": 0.6,
+    "smash_drop_gap_dps": 0.62
+   },
+   "per_player": [
+    {
+     "player": "Play1",
+     "level": "Low",
+     "predicted": "Low",
+     "index": -1.1
+    },
+    {
+     "player": "Play2",
+     "level": "Medium",
+     "predicted": "Medium",
+     "index": 0.42
+    },
+    {
+     "player": "Play3",
+     "level": "Low",
+     "predicted": "Low",
+     "index": -1.85
+    },
+    {
+     "player": "Play4",
+     "level": "High",
+     "predicted": "High",
+     "index": 1.53
+    },
+    {
+     "player": "Play5",
+     "level": "Medium",
+     "predicted": "Medium",
+     "index": 0.69
+    },
+    {
+     "player": "Play6",
+     "level": "High",
+     "predicted": "High",
+     "index": 1.31
+    },
+    {
+     "player": "Play7",
+     "level": "Medium",
+     "predicted": "Medium",
+     "index": -0.19
+    },
+    {
+     "player": "Play8",
+     "level": "Medium",
+     "predicted": "Low",
+     "index": -0.54
+    },
+    {
+     "player": "Play9",
+     "level": "Low",
+     "predicted": "Medium",
+     "index": 0.42
+    },
+    {
+     "player": "Play10",
+     "level": "Medium",
+     "predicted": "High",
+     "index": 0.83
+    },
+    {
+     "player": "Play11",
+     "level": "Low",
+     "predicted": "Low",
+     "index": -0.67
+    },
+    {
+     "player": "Play12",
+     "level": "Low",
+     "predicted": "Low",
+     "index": -0.84
+    }
+   ]
+  },
+  "archetype": {
+   "criterion": "min |mean top-archetype probability - mean bootstrap agreement| over sessions",
+   "n_sessions": 8,
+   "n_bootstrap": 200,
+   "temperature_search": [
+    {
+     "T": 10,
+     "mean_top_prob": 0.99,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.223
+    },
+    {
+     "T": 15,
+     "mean_top_prob": 0.965,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.198
+    },
+    {
+     "T": 20,
+     "mean_top_prob": 0.94,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.173
+    },
+    {
+     "T": 25,
+     "mean_top_prob": 0.917,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.15
+    },
+    {
+     "T": 30,
+     "mean_top_prob": 0.892,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.125
+    },
+    {
+     "T": 35,
+     "mean_top_prob": 0.862,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.095
+    },
+    {
+     "T": 40,
+     "mean_top_prob": 0.826,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.059
+    },
+    {
+     "T": 45,
+     "mean_top_prob": 0.786,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.019
+    },
+    {
+     "T": 50,
+     "mean_top_prob": 0.744,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.023
+    },
+    {
+     "T": 60,
+     "mean_top_prob": 0.662,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.104
+    },
+    {
+     "T": 80,
+     "mean_top_prob": 0.532,
+     "mean_bootstrap_agreement": 0.767,
+     "gap": 0.235
+    }
+   ],
+   "chosen_T": 45.0,
+   "bootstrap_attribute_sd": {
+    "Power": 5.69,
+    "Speed": 3.52,
+    "Control": 5.43,
+    "Endurance": 6.52,
+    "Agility": 3.2
+   },
+   "per_game_agreement_with_session": 0.588,
+   "per_game": [
+    {
+     "session": "24469883647",
+     "game": 1,
+     "archetype": "Attacking",
+     "session_archetype": "Attacking"
+    },
+    {
+     "session": "24469883647",
+     "game": 2,
+     "archetype": "Attacking",
+     "session_archetype": "Attacking"
+    },
+    {
+     "session": "24515866107",
+     "game": 1,
+     "archetype": "All-round",
+     "session_archetype": "Attacking"
+    },
+    {
+     "session": "24515866107",
+     "game": 2,
+     "archetype": "Attacking",
+     "session_archetype": "Attacking"
+    },
+    {
+     "session": "24515866107",
+     "game": 3,
+     "archetype": "Attacking",
+     "session_archetype": "Attacking"
+    },
+    {
+     "session": "24566013344",
+     "game": 1,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24566013344",
+     "game": 2,
+     "archetype": "All-round",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24566013344",
+     "game": 3,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24600478863",
+     "game": 1,
+     "archetype": "All-round",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24600478863",
+     "game": 2,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24643797811",
+     "game": 1,
+     "archetype": "All-round",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24684683098",
+     "game": 1,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24684683098",
+     "game": 2,
+     "archetype": "All-round",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24729866298",
+     "game": 1,
+     "archetype": "All-round",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24729866298",
+     "game": 2,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24729866298",
+     "game": 3,
+     "archetype": "Attacking",
+     "session_archetype": "All-round"
+    },
+    {
+     "session": "24765783524",
+     "game": 1,
+     "archetype": "Control",
+     "session_archetype": "Control"
+    }
+   ],
+   "sessions": [
+    {
+     "session": "24469883647",
+     "attributes": {
+      "Power": 75.5,
+      "Speed": 58.0,
+      "Control": 40.3,
+      "Endurance": 42.0,
+      "Agility": 31.9
+     },
+     "archetype": "Attacking",
+     "archetype_probs": {
+      "Attacking": 0.996,
+      "Defensive": 0.0,
+      "Control": 0.0,
+      "All-round": 0.004
+     },
+     "skill_tier": "Medium",
+     "skill_index": 0.15,
+     "description": "Rear-court power: a high share of smashes and fast overhead swings."
+    },
+    {
+     "session": "24515866107",
+     "attributes": {
+      "Power": 74.0,
+      "Speed": 65.4,
+      "Control": 50.4,
+      "Endurance": 42.3,
+      "Agility": 50.9
+     },
+     "archetype": "Attacking",
+     "archetype_probs": {
+      "Attacking": 0.886,
+      "Defensive": 0.001,
+      "Control": 0.0,
+      "All-round": 0.114
+     },
+     "skill_tier": "Medium",
+     "skill_index": -0.24,
+     "description": "Rear-court power: a high share of smashes and fast overhead swings."
+    },
+    {
+     "session": "24566013344",
+     "attributes": {
+      "Power": 58.8,
+      "Speed": 43.5,
+      "Control": 52.9,
+      "Endurance": 54.3,
+      "Agility": 53.6
+     },
+     "archetype": "All-round",
+     "archetype_probs": {
+      "Attacking": 0.081,
+      "Defensive": 0.012,
+      "Control": 0.012,
+      "All-round": 0.895
+     },
+     "skill_tier": "Medium",
+     "skill_index": 0.57,
+     "description": "No single dominant trait: power, tempo and control in balance."
+    },
+    {
+     "session": "24600478863",
+     "attributes": {
+      "Power": 63.8,
+      "Speed": 71.7,
+      "Control": 64.5,
+      "Endurance": 61.3,
+      "Agility": 56.2
+     },
+     "archetype": "All-round",
+     "archetype_probs": {
+      "Attacking": 0.02,
+      "Defensive": 0.064,
+      "Control": 0.017,
+      "All-round": 0.899
+     },
+     "skill_tier": "Low",
+     "skill_index": -0.34,
+     "description": "No single dominant trait: power, tempo and control in balance."
+    },
+    {
+     "session": "24643797811",
+     "attributes": {
+      "Power": 54.7,
+      "Speed": 36.3,
+      "Control": 58.9,
+      "Endurance": 15.6,
+      "Agility": 41.3
+     },
+     "archetype": "All-round",
+     "archetype_probs": {
+      "Attacking": 0.07,
+      "Defensive": 0.002,
+      "Control": 0.186,
+      "All-round": 0.742
+     },
+     "skill_tier": "Low",
+     "skill_index": -0.27,
+     "description": "No single dominant trait: power, tempo and control in balance."
+    },
+    {
+     "session": "24684683098",
+     "attributes": {
+      "Power": 70.6,
+      "Speed": 51.5,
+      "Control": 52.8,
+      "Endurance": 60.7,
+      "Agility": 61.5
+     },
+     "archetype": "All-round",
+     "archetype_probs": {
+      "Attacking": 0.467,
+      "Defensive": 0.005,
+      "Control": 0.0,
+      "All-round": 0.527
+     },
+     "skill_tier": "Medium",
+     "skill_index": 0.14,
+     "description": "No single dominant trait: power, tempo and control in balance."
+    },
+    {
+     "session": "24729866298",
+     "attributes": {
+      "Power": 62.2,
+      "Speed": 59.9,
+      "Control": 50.6,
+      "Endurance": 56.7,
+      "Agility": 37.2
+     },
+     "archetype": "All-round",
+     "archetype_probs": {
+      "Attacking": 0.402,
+      "Defensive": 0.003,
+      "Control": 0.004,
+      "All-round": 0.591
+     },
+     "skill_tier": "Medium",
+     "skill_index": -0.01,
+     "description": "No single dominant trait: power, tempo and control in balance."
+    },
+    {
+     "session": "24765783524",
+     "attributes": {
+      "Power": 48.6,
+      "Speed": 40.6,
+      "Control": 62.6,
+      "Endurance": 35.4,
+      "Agility": 35.4
+     },
+     "archetype": "Control",
+     "archetype_probs": {
+      "Attacking": 0.002,
+      "Defensive": 0.001,
+      "Control": 0.753,
+      "All-round": 0.244
+     },
+     "skill_tier": "Low",
+     "skill_index": -1.2,
+     "description": "Rally construction: drops and clears over smashes, consistent swing speed, varied patterns."
+    }
+   ]
+  }
+ }
+}

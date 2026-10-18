@@ -1,0 +1,737 @@
+{
+ "created": "2026-09-25T15:33:19",
+ "trained_on": "all 12 BADS players",
+ "classes": [
+  "BackhandTransition",
+  "ForehandHigh",
+  "ForehandKill",
+  "ForehandLob"
+ ],
+ "default": "selected_ensemble",
+ "default_rule": "best mean per-player accuracy, leave-one-player-out over all 12 players (badminsens.select), after the held-out test evaluation",
+ "balance_iters": 3,
+ "gate": {
+  "file": "gate.joblib",
+  "quantile": 0.97
+ },
+ "models": {
+  "gru": {
+   "file": "gru.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "none",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 0.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "sgd",
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.5,
+    "dense": [
+     128
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": false,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "gru"
+   },
+   "cv_accuracy": 0.7939778129952456,
+   "test_accuracy": 0.8725038402457757,
+   "test_macro_f1": 0.8695146523520024,
+   "loso12": {
+    "accuracy": 0.8207547169811321,
+    "player_mean": 0.819188849417106,
+    "player_min": 0.7166666666666667,
+    "skew": 0.819188849417106,
+    "skew_bal": 0.819188849417106
+   }
+  },
+  "rf": {
+   "file": "rf.joblib",
+   "family": "features",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "rf",
+    "max_features": "sqrt"
+   },
+   "cv_accuracy": 0.8700475435816165,
+   "test_accuracy": 0.8417818740399386,
+   "test_macro_f1": 0.8253254878301591,
+   "loso12": {
+    "accuracy": 0.8608490566037735,
+    "player_mean": 0.8594415277033365,
+    "player_min": 0.75,
+    "skew": 0.7602118297057147,
+    "skew_bal": 0.7836713496999025
+   }
+  },
+  "transformer": {
+   "file": "transformer.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 15.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 30,
+    "batch": 32,
+    "optimizer": "adam",
+    "lr": 0.0005,
+    "weight_decay": 0.001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.0,
+    "dropout": 0.3,
+    "dense": [],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 32,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "transformer"
+   },
+   "cv_accuracy": 0.7828843106180665,
+   "test_accuracy": 0.8387096774193549,
+   "test_macro_f1": 0.829743396419239,
+   "loso12": {
+    "accuracy": 0.8290094339622641,
+    "player_mean": 0.8273861945374592,
+    "player_min": 0.7333333333333333,
+    "skew": 0.8165639995715518,
+    "skew_bal": 0.814698730835332
+   }
+  },
+  "et": {
+   "file": "et.joblib",
+   "family": "features",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 2,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "et",
+    "min_samples_leaf": 2,
+    "max_features": 0.3
+   },
+   "cv_accuracy": 0.8716323296354992,
+   "test_accuracy": 0.8356374807987711,
+   "test_macro_f1": 0.8189476053341326,
+   "loso12": {
+    "accuracy": 0.8525943396226415,
+    "player_mean": 0.8514471668867737,
+    "player_min": 0.75,
+    "skew": 0.756807746150506,
+    "skew_bal": 0.7806074012793917
+   }
+  },
+  "svm": {
+   "file": "svm.joblib",
+   "family": "features",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "svm",
+    "C": 0.3,
+    "gamma": 0.0003
+   },
+   "cv_accuracy": 0.8922345483359746,
+   "test_accuracy": 0.8141321044546851,
+   "test_macro_f1": 0.7826275809884358,
+   "loso12": {
+    "accuracy": 0.8714622641509434,
+    "player_mean": 0.8715097117823901,
+    "player_min": 0.75,
+    "skew": 0.7936294073643653,
+    "skew_bal": 0.8383623430595735
+   }
+  },
+  "hgb": {
+   "file": "hgb.joblib",
+   "family": "features",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "hgb",
+    "learning_rate": 0.03,
+    "max_leaf_nodes": 31,
+    "l2_regularization": 0.0
+   },
+   "cv_accuracy": 0.8779714738510301,
+   "test_accuracy": 0.8095238095238096,
+   "test_macro_f1": 0.7876791493296347,
+   "loso12": {
+    "accuracy": 0.8608490566037735,
+    "player_mean": 0.8607321296518332,
+    "player_min": 0.7333333333333333,
+    "skew": 0.776988897712653,
+    "skew_bal": 0.8178017449469471
+   }
+  },
+  "cnn": {
+   "file": "cnn.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 0.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 30,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.0005,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.2,
+    "dropout": 0.3,
+    "dense": [
+     128
+    ],
+    "channels": [
+     64,
+     128,
+     128
+    ],
+    "kernel": 9,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "cnn"
+   },
+   "cv_accuracy": 0.7923930269413629,
+   "test_accuracy": 0.8095238095238096,
+   "test_macro_f1": 0.8112435250375842,
+   "loso12": {
+    "accuracy": 0.8066037735849056,
+    "player_mean": 0.8068140235839353,
+    "player_min": 0.5694444444444444,
+    "skew": 0.8076137953155541,
+    "skew_bal": 0.8062173806245924
+   }
+  },
+  "ensemble": {
+   "family": "ensemble",
+   "members": [
+    "svm",
+    "mlp",
+    "hgb"
+   ],
+   "cv_accuracy": 0.8837823560486001,
+   "test_accuracy": 0.8018433179723502
+  },
+  "mlp": {
+   "file": "mlp.joblib",
+   "family": "mlp",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 64,
+    "optimizer": "adamw",
+    "lr": 0.005,
+    "weight_decay": 0.05,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.5,
+    "dense": [
+     128
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "mlp"
+   },
+   "cv_accuracy": 0.8811410459587956,
+   "test_accuracy": 0.7941628264208909,
+   "test_macro_f1": 0.7547560501667997,
+   "loso12": {
+    "accuracy": 0.8561320754716981,
+    "player_mean": 0.856415903491666,
+    "player_min": 0.75,
+    "skew": 0.7981779612160317,
+    "skew_bal": 0.8008944940192948
+   }
+  },
+  "logreg": {
+   "file": "logreg.joblib",
+   "family": "features",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 0,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 2,
+    "epochs": 60,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "logreg"
+   },
+   "cv_accuracy": 0.8526148969889065,
+   "test_accuracy": 0.7788018433179723,
+   "test_macro_f1": 0.7382178433089023
+  },
+  "lstm": {
+   "file": "lstm.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "none",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 40,
+    "batch": 32,
+    "optimizer": "adamw",
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     64
+    ],
+    "channels": [
+     32,
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "lstm"
+   },
+   "cv_accuracy": 0.7781299524564184,
+   "test_accuracy": 0.7680491551459294,
+   "test_macro_f1": 0.7693796209741729
+  },
+  "cnn_lstm": {
+   "file": "cnn_lstm.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 30.0,
+    "aug_stroke_rot": 15.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.02,
+    "seq_lowpass": 20.0,
+    "seq_decim": 4,
+    "epochs": 60,
+    "batch": 64,
+    "optimizer": "sgd",
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "scheduler": "none",
+    "label_smoothing": 0.0,
+    "dropout": 0.5,
+    "dense": [
+     64
+    ],
+    "channels": [
+     64,
+     128
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "cnn_lstm"
+   },
+   "cv_accuracy": 0.7591125198098256,
+   "test_accuracy": 0.7542242703533026,
+   "test_macro_f1": 0.7426886367651003
+  },
+  "tcn": {
+   "file": "tcn.joblib",
+   "family": "sequence",
+   "config": {
+    "features": "both",
+    "align": true,
+    "norm": "session_center",
+    "seed": 0,
+    "aug_copies": 4,
+    "aug_session_rot": 15.0,
+    "aug_stroke_rot": 8.0,
+    "aug_shift": 6,
+    "aug_acc_scale": [
+     0.7,
+     1.1
+    ],
+    "aug_gyr_scale": [
+     0.85,
+     1.15
+    ],
+    "aug_noise": 0.0,
+    "seq_lowpass": 12.0,
+    "seq_decim": 4,
+    "epochs": 40,
+    "batch": 32,
+    "optimizer": "adam",
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "label_smoothing": 0.1,
+    "dropout": 0.3,
+    "dense": [
+     128,
+     64
+    ],
+    "channels": [
+     64,
+     64,
+     64,
+     64
+    ],
+    "kernel": 7,
+    "hidden": 64,
+    "layers": 2,
+    "bidirectional": true,
+    "d_model": 64,
+    "heads": 4,
+    "device": "auto",
+    "balance_iters": 0,
+    "model": "tcn"
+   },
+   "cv_accuracy": 0.7987321711568938,
+   "test_accuracy": 0.7357910906298004,
+   "test_macro_f1": 0.7408688203190351
+  },
+  "selected_ensemble": {
+   "family": "ensemble",
+   "members": [
+    "svm",
+    "cnn",
+    "transformer"
+   ],
+   "loso12_accuracy": 0.875
+  }
+ }
+}

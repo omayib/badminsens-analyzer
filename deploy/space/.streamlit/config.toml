@@ -1,0 +1,14 @@
+[server]
+port = 7860
+address = "0.0.0.0"
+headless = true
+# the Space is shown inside an iframe on huggingface.co: uploads fail with XSRF/CORS checks on
+enableXsrfProtection = false
+enableCORS = false
+maxUploadSize = 100
+
+[client]
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false

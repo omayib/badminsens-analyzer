@@ -1,0 +1,29 @@
+# Python / environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Personal recordings and their outputs (session folders are named by Garmin activity id)
+/[0-9]*/
+*.fit
+*_strokes.csv
+*_summary.json
+
+# BADS dataset (CC BY-NC-ND 4.0, not redistributed), its cache and the paper
+BADS_CLL_OPENACCESS_V1/
+data/
+paper.pdf
+
+# Local experiment artifacts; only these two are published on Hugging Face
+experiments/*
+!experiments/selection.json
+!experiments/tuning_log.jsonl
+
+# raw recordings (zipped .fit downloads) and app runtime state
+raw/
+.cache/
+.appdata/
+
+# reference papers (third-party copyright, not redistributed)
+references/

@@ -1,0 +1,14 @@
+# stroke models (badminsens)
+fitparse==1.2.0
+joblib==1.6.0
+numpy==2.5.3
+scikit-learn==1.9.1
+scipy==1.18.1
+torch==2.14.0  # CUDA build used here (cu130); the CPU build also works: pip install torch --index-url https://download.pytorch.org/whl/cpu
+matplotlib==3.11.2  # badminsens.plot charts
+
+# playstyle app (src/, app.py)
+streamlit==1.66.0
+plotly==7.1.0
+pandas==3.0.6
+huggingface_hub==2.2.0  # src.model.load() falls back to the Hub
