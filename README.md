@@ -6,6 +6,9 @@ The recordings come from a custom Garmin watch app that logs raw IMU data:
 [github.com/omayib/badak](https://github.com/omayib/badak). Trained models and a Colab notebook are
 on Hugging Face: [omayib/badak](https://huggingface.co/omayib/badak).
 
+**Try it online:** [findmeracket.streamlit.app](https://findmeracket.streamlit.app/). Upload `.fit` files
+for a playstyle profile and racket / string-tension recommendations.
+
 ## Quick start
 
 ```bash
@@ -71,6 +74,8 @@ Clear is probably undercounted, because clear→smash is the main error on the d
 recall 0.3–0.66).
 
 ## Playstyle app
+
+Live at [findmeracket.streamlit.app](https://findmeracket.streamlit.app/), or run it locally:
 
 ```bash
 .venv/bin/streamlit run app.py                     # upload .fit files in the browser
