@@ -27,6 +27,9 @@ metrics:
 *One of my matches: heart rate on top, and below it every stroke the model found, sorted by type.
 That picture is what this whole project was about.*
 
+**Try the playstyle app online:** [findmeracket.streamlit.app](https://findmeracket.streamlit.app/).
+Upload your `.fit` files to get a playstyle profile and racket / string-tension recommendations.
+
 ## Why I built this
 
 I play badminton, and after every match I wonder how I actually played. How many smashes did I hit?
@@ -215,7 +218,8 @@ rec = recommend(pred, session["features"])
 # {'balance': 'Head-heavy', 'weight': '4U', 'shaft': 'Medium', 'tension_lbs': [23, 26], 'reasons': {...}, ...}
 ```
 
-Run the app locally with `streamlit run app.py`. It takes several `.fit` files at once and keeps
+Use the app online at [findmeracket.streamlit.app](https://findmeracket.streamlit.app/), or run it
+locally with `streamlit run app.py`. It takes several `.fit` files at once and keeps
 your history (SQLite on the server, mirrored into your browser's IndexedDB), so you can browse past
 sessions without uploading again.
 
