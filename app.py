@@ -21,7 +21,7 @@ import streamlit as st
 
 from src import model as pmodel
 from src.history import History, compact
-from src.parser import FEATURES, parse_fit
+from src.parser import FEATURES, parse_fit, resolve_model
 from src.recommendation import racket_svg, recommend
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -512,6 +512,9 @@ survives block-bootstrap resampling of the swings.
 **Skill tier.** A skill index (smash speed, backhand speed, smash–drop speed gap, gyro clipped to the Garmin's
 ±2000 °/s range) was fitted on the BADS players' Low / Medium / High levels and validated leave-one-player-out.
 """)
+    stroke_model = resolve_model()
+    st.markdown(f"- Stroke model on this server: **{'SVM + CNN + Transformer ensemble' if stroke_model == 'default' else stroke_model.upper()}**"
+                + ("" if stroke_model == "default" else " (no PyTorch here; 87.1% vs the ensemble's 87.5%, leave-one-player-out)."))
     if v.get("skill_loso"):
         s = v["skill_loso"]
         st.markdown(f"- Skill tier, leave-one-player-out on {s['players']} BADS players: **{s['exact_accuracy']:.0%}** exact "

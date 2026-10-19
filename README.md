@@ -86,8 +86,9 @@ these to racket balance, weight, shaft and string tension, and `src/history.py` 
 SQLite (`.appdata/`, mirrored into the browser's IndexedDB). Weights and validation results are in
 `models/playstyle.json`; method and limits in `MODEL_CARD.md`.
 
-Deploy on Streamlit Community Cloud with main file `streamlit_cloud/streamlit_app.py` and Python 3.12:
-that folder's `requirements.txt` installs CPU-only torch. `deploy/build_space.sh` assembles a Docker
+Deploy on Streamlit Community Cloud with main file `streamlit_cloud/streamlit_app.py` and Python 3.12
+or 3.13 (numpy 2.5 needs >= 3.12). That folder's `requirements.txt` leaves out torch, and without torch
+the app uses the SVM stroke model instead of the ensemble (87.1% vs 87.5% leave-one-player-out). `deploy/build_space.sh` assembles a Docker
 Hugging Face Space instead (needs a PRO account).
 
 ## Pipeline

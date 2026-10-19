@@ -1,8 +1,8 @@
 """Streamlit Community Cloud entrypoint: runs ../app.py.
 
 The app lives in this folder only so Community Cloud picks up streamlit_cloud/requirements.txt
-(CPU-only torch) instead of the root requirements.txt (CUDA torch for local training).
-Deploy settings: main file streamlit_cloud/streamlit_app.py, Python 3.12.
+(no torch: SVM stroke model) instead of the root requirements.txt (CUDA torch for training).
+Deploy settings: main file streamlit_cloud/streamlit_app.py (Python 3.12, as tested).
 """
 import os
 import runpy

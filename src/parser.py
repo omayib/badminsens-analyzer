@@ -72,6 +72,19 @@ FEATURES = {
 }
 
 
+def resolve_model(model="default"):
+    """The default stroke model is an SVM + CNN + Transformer ensemble; the neural members need
+    torch. Without torch (e.g. a CPU-only cloud host) fall back to the SVM alone, which scores
+    87.1% vs 87.5% leave-one-player-out on the 12 BADS players."""
+    if model != "default":
+        return model
+    try:
+        import torch  # noqa: F401
+    except Exception:  # missing or broken install (failed C extension) -> sklearn-only
+        return "svm"
+    return model
+
+
 def file_id(path):
     h = hashlib.sha1()
     with open(path, "rb") as f:
@@ -235,6 +248,7 @@ def session_features(swings, meta, hr, games):
 def parse_fit(path, model="default", min_peak_dps=800.0, min_rest_min=MIN_REST_MIN, cache_dir=None,
               models_dir=MODELS_DIR):
     """Full analysis of one .fit file -> dict(meta, swings, hr, games, features, per_game)."""
+    model = resolve_model(model)
     fid = file_id(path)
     cache = None
     if cache_dir:
